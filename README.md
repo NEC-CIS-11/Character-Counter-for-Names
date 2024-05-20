@@ -26,6 +26,10 @@ The Character Counter Program is a user-friendly application designed to count a
 - For example, if you entered "hello", it might display:
   h = 1 , e  = 1, l =2, o = 1 
 
+##### EXAMPLE OF PROGRAM OUTPUT: 
+![Screenshot 2024-05-20 001852](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/8720268d-c791-4818-9a60-4cc4bffb290d)
+
+
 ## Behind the Scenes
 - The program uses an array to keep track of the counts for each letter.
 - It converts each letter to a corresponding position in the array.
