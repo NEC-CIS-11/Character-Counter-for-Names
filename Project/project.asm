@@ -1,13 +1,13 @@
         .ORIG x3000  
 
        			  ; Display prompts below
-        LEA R0, MSG0      ; Load address of MSG0 into R0
-        PUTS              ; Print contents of R0 : MSG0
-        LEA R0, MSG1      ; Load address of MSG1 into R0
-        PUTS              ; Print contents of R0 : MSG1 string
+        LEA R0, PRMT      ; Load address of PRMT into R0
+        PUTS              ; Print contents of R0 : PRMT
+        LEA R0, PROMPT    ; Load address of PROMPT into R0
+        PUTS              ; Print contents of R0 : PROMPT string
 
 	
-        LEA R2, NEG97     ; Load address of NEG97 into R2
+        LEA R2, OFFSET_97     ; Load address of OFFSET_97 into R2
         LDR R2, R2, #0    ; Load contents of address in R2 into R2 : R2 now holds -97
 
         LEA R4, ARRAY     ; Load starting address of ARRAY into R4
@@ -17,7 +17,7 @@ INPUT
         GETC              ; Read character into R0
         OUT               ; Show the character on the screen so user can see what they are typing
         ADD R5, R0, #-10  ; Subtract 10, because the 'Enter' key has value of 10
-        BRz OUTPUT        ; If zero (Enter pressed), branch to OUTPUT
+        BRz OUTPUT        ; If zero, Enter pressed, branch to OUTPUT
 
         ADD R0, R0, R2    ; Subtract 97 to find ASCII index : R0 = R0 + (-97)
         BRn INPUT         ; If the result is negative then read the next character
@@ -34,15 +34,15 @@ INPUT_LOOP
 	
 OUTPUT
        			  ; Print the character frequencies below
-        LEA R3, POS26     ; Load address of POS26 into R3
+        LEA R3, TOT_LTRS  ; Load address of TOT_LTRS into R3
         LDR R3, R3, #0    ; Load contents of address in R3 into R3 : R3 now holds 26
         AND R0, R0, #0    ; Reset R0 to zero
-        LEA R6, POS97     ; Load address of POS97 into R6
-        LDR R6, R6, #0    ; Load contents of POS97 into R6
+        LEA R6, POS_97    ; Load address of POS_97 into R6
+        LDR R6, R6, #0    ; Load contents of POS_97 into R6
         ADD R0, R6, #0    ; Add to R0 : print letter 'a' later
 
         LEA R4, ARRAY     ; Point to start of ARRAY
-        LEA R2, POS48     ; Load address of POS48 into R2
+        LEA R2, POS_48     ; Load address of POS_48 into R2
         LDR R2, R2, #0    ; Load contents into R2 :R2 now holds 48
 
 OUTPUT_LOOP
@@ -70,16 +70,18 @@ OUTPUT_LOOP
 
 	HALT                    
 
-MSG0    .STRINGZ "Character Counter Program!\n"
-MSG1    .STRINGZ "Please enter a lower-case string: "
+PRMT    .STRINGZ "Character Counter Program!\n"
+PROMPT  .STRINGZ "Please enter a lower-case string: "
 
-ARRAY   .BLKW 26          ; Array of size 26 to store counts for 'a' to 'z'
-NEG97   .FILL #-97        ; Constant for converting from ASCII : 'a' is 97
-POS26   .FILL #26         ; Constant for counter : 26 letters in alphabet
+ARRAY   .BLKW 26          ; Array of size 26 to store counts of frequency of letters from a to z
+
+OFFSET_97   .FILL #-97        ; For converting from ASCII : a is 97
+TOT_LTRS    .FILL #26         ; For counter : 26 letters in alphabet
+
+POS_97   .FILL #97         ; For converting to ASCII letters : a to z
+POS_48   .FILL #48         ; For converting to ASCII numbers : 0 to 9'
+
 EQ      .FILL x003D       ; Hex value for equal sign '=' in ASCII
 TAB     .FILL x0009       ; Hex value for making a 'tab' in ASCII
-
-POS97   .FILL #97         ; Constant for converting to ASCII letters : 'a' to 'z'
-POS48   .FILL #48         ; Constant for converting to ASCII numbers : '0' to '9'
 
 .END
