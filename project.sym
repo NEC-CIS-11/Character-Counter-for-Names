@@ -1,0 +1,15 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	ARRAY                   306D
+//	EQ                      3089
+//	INPUT                   3008
+//	INPUT_LOOP              300F
+//	MSG0                    302E
+//	MSG1                    304A
+//	NEG97                   3087
+//	OUTPUT                  3015
+//	OUTPUT_LOOP             301E
+//	POS26                   3088
+//	POS48                   308C
+//	POS97                   308B
+//	TAB                     308A
