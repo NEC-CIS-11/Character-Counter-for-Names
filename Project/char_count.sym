@@ -1,0 +1,21 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	ARRAY                   307D
+//	CHECK_LOWERCASE         303F
+//	CHECK_UPPERCASE         3032
+//	EQ                      309E
+//	INPUT                   300A
+//	INPUT_LOOP              3013
+//	NEG_26                  3099
+//	NEG_97                  3097
+//	OFFSET_65               3098
+//	OUTPUT                  3019
+//	OUTPUT_LOOP             3022
+//	POS_32                  309A
+//	POS_48                  309D
+//	POS_97                  309C
+//	PRMT                    3049
+//	PROCESS_CHAR            3010
+//	PROMPT                  3065
+//	TAB                     309F
+//	TOT_LTRS                309B
