@@ -1,5 +1,4 @@
 .ORIG x3000  
-
                  ; Display prompts 
 LEA R0, PRMT      ; LEA PRMT -> R0
 PUTS              ; Output R0 : PRMT
@@ -12,7 +11,6 @@ LEA R4, ARRAY     ; LEA the beginning address of the array -> R4
 AND R3, R3, #0    ; Clear R3 - character counter
 AND R7, R7, #0    ; Clear R7 - lowercase flag
 AND R6, R6, #0    ; Clear R6 - uppercase flag
-
 
 GET_INPUT
 GETC              ; Same as TRAP x20: read single char
@@ -37,7 +35,6 @@ STR R1, R4, #0    ; Now put new increased value in the array again
 LEA R4, ARRAY     ; Reset R4 to point to the start of the ARRAY
 BR GET_INPUT          ; branch to GET_INPUT
 
-
 RES_OUT
                 ; Print the character frequencies below
 LEA R3, TOT_LTRS  ; Loading TOT_LTRS address into R3
@@ -51,11 +48,9 @@ LEA R4, ARRAY     ; This will point to beginning addresss of array
 LEA R2, OFFSET_NUM ; LEA so the address of OFFSET_NUM can be put into R2
 LDR R2, R2, #0    ; LDR so that what is in R2 can be put back into R2 with offset 48
 
-
 LOOP4OUT
 OUT               ; Console out char 
 
-                 ;  for printing the equal sign
 LD R1, EQ         ; LD equal sign into R1
 ADD R0, R1, #0    ; Copy equal sign to reg
 OUT               ; Console out the equal sign
