@@ -17,13 +17,13 @@ AND R6, R6, #0    ; Clear R6 - uppercase flag
 
 INPUT
 GETC              ; Read character into R0
-OUT               ; Show the character on the screen so user can see what they are typing
-ADD R5, R0, #-10  ; Subtract 10, because the 'Enter' key has value of 10
-BRz OUTPUT        ; If zero, Enter pressed, branch to OUTPUT
+OUT               ; Show the character on the screen 
+ADD R5, R0, #-10  ; Subtract 10, because the enter key has value of 10
+BRz OUTPUT        ; If zero it means Enter pressed, branch to OUTPUT
 
                     ; Check if character is uppercase
 JSR CHECK_UPPERCASE ; Jump to subroutine to check for uppercase
-BRnzp PROCESS_CHAR  ; Continue processing regardless of result
+BRnzp PROCESS_CHAR  
 
 PROCESS_CHAR
 ADD R0, R0, R2    ; Subtract 97 to find ASCII index : R0 = R0 + (-97)
@@ -49,7 +49,7 @@ ADD R0, R6, #0    ; Add to R0 : print letter 'a' later
 
 LEA R4, ARRAY     ; Point to start of ARRAY
 LEA R2, POS_48    ; Load address of POS_48 into R2
-LDR R2, R2, #0    ; Load contents into R2 :R2 now holds 48
+LDR R2, R2, #0    ; Load contents into R2: R2 now holds 48
 
 OUTPUT_LOOP
 OUT               ; Print character stored in R0 as letter
@@ -94,12 +94,12 @@ CHECK_LOWERCASE
 LEA R5, NEG_97 ; Load address of NEG_97 into R5
 LDR R5, R5, #0 ; Load contents of NEG_97 into R5: -97
 ADD R5, R0, R5 ; Subtract 97: a
-BRn INPUT ; If negative, not lowercase
+BRn INPUT      ; If negative, not lowercase
 LEA R6, NEG_26 ; Load address of NEG_26 into R6
 LDR R6, R6, #0 ; Load contents of NEG_26 into R6: -26
 ADD R5, R5, R6 ; Subtract 26
-BRp INPUT ; If positive, not lowercase
-ADD R7, R7, #1 ; Set R7 to 1 indicating presence of lowercase
+BRp INPUT      ; If positive, not lowercase
+ADD R7, R7, #1 ; Set R7 to 1 indicating lowercase
 RET
 
 PRMT    .STRINGZ "Character Counter Program!\n"
