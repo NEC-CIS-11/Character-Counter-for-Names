@@ -1,4 +1,7 @@
 .ORIG x3000  
+
+STACK	.BLKW 26
+
                  ; Display prompts 
 LEA R0, PRMT      ; LEA PRMT -> R0
 PUTS              ; Output R0 : PRMT
@@ -68,8 +71,49 @@ ADD R6, R6, #1    ; Continue onto next ASCII value
 ADD R0, R6, #0    ; ADD R6 to R0 be able to print character at loop start
 ADD R3, R3, #-1   ; Decrement loop 
 BRp LOOP4OUT      ; Only pos loop
+	  
+LEA R0, LEN
+PUTS
+
+		  ; Stack
+LEA R6, STACK
+
+LEA R4, ARRAY	  ; Reset index of array
+LEA R3, TOT_LTRS
+LDR R3, R3, #0
+AND R0, R0, #0
+
+PUSH_LOOP
+LDR R1, R4, #0 	  ; Load the value at the current index of ARRAY into R1
+
+ADD R6, R6, #-1	  ; Decrement R6 to push
+    
+STR R1, R6, #0 	  ; Store R1 to the stack
+    
+ADD R4, R4, #1 	  ; Move to the next index
+    
+ADD R3, R3, #-1	  ; Decrement the counter
+    
+BRp PUSH_LOOP  	  ; Loop back if there are more characters to process
+
+LEA R3, TOT_LTRS
+LDR R3, R3, #0
+
+SUM_LENGTHS
+    
+LDR R1, R6, #0 	  ; Pop the top value from the stack into R1
+    
+ADD R0, R0, R1 	  ; Add the value in R1 to R0
+    
+ADD R6, R6, #1 	  ; Move stack pointer back down (pop operation)
+    
+ADD R3, R3, #-1   
+BRp SUM_LENGTHS  ; Loop until R6 is back at initial position
+
+ADD R0, R0, R2
+OUT
  
-HALT                    
+HALT      
 
 CHECK_UPPER
 LEA R5, OFFSET_65 ; Load OFFSET_65 address into R5
@@ -98,9 +142,12 @@ BRp GET_INPUT      ; If positive, not lowercase
 ADD R7, R7, #1 ; Set R7 to 1 indicating lowercase
 RET
 
+
+
 PRMT    .STRINGZ "String character counter program\n"
 PROMPT  .STRINGZ "\nEnter a string: "
 S 	.STRINGZ " "
+LEN	.STRINGZ "\nLength Of string: "
 
 ARRAY   .BLKW 26              ; Array-> size 26 to store counts of frequency of letters
 
@@ -117,12 +164,3 @@ EQ      .FILL x003D       ; Hexadecimal ASCII value for equal sign '='
 TAB     .FILL x0009       ; Hexadecimal ASCII value for making a 'tab'
 
 .END
-
-
-
-
-
-
-
-
-
