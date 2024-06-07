@@ -1,19 +1,19 @@
 //Symbol Name		Page Address
 //----------------	------------
-//	ARRAY                   30C4
+//	ARRAY                   30C6
 //	CHECK_LOWER             3070
 //	CHECK_UPPER             3063
-//	EQ                      30E5
+//	EQ                      30E7
 //	GET_INPUT               3024
 //	LEN                     30B0
 //	LOOP4IN                 302D
 //	LOOP4OUT                303C
-//	OFFSET_65               30DF
-//	OFFSET_97               30DE
-//	OFFSET_CNVRT            30E1
-//	OFFSET_LOWER            30E3
-//	OFFSET_NUM              30E4
-//	OFFSET_UPPER            30E0
+//	OFFSET_65               30E1
+//	OFFSET_97               30E0
+//	OFFSET_CNVRT            30E3
+//	OFFSET_LOWER            30E5
+//	OFFSET_NUM              30E6
+//	OFFSET_UPPER            30E2
 //	PRMT                    307A
 //	PROCESS_CHAR            302A
 //	PROMPT                  309C
@@ -22,5 +22,5 @@
 //	S                       30AE
 //	STACK                   3000
 //	SUM_LENGTHS             305A
-//	TAB                     30E6
-//	TOT_LTRS                30E2
+//	TAB                     30E8
+//	TOT_LTRS                30E4
