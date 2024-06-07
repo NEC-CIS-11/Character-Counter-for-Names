@@ -2,35 +2,35 @@
 # Character Counter Program
 
 ## Overview
-The Character Counter Program is a user-friendly application designed to count and display how often each letter appears in a line of text that you enter. This program runs on the LC-3 simulator.
+The Character Counter Program is an application designed to count and display how often each letter appears in a line of text that you enter. This program runs on the LC-3 simulator.
 
 ## How It Works
 
 ### Getting Started
 
 #### Welcome Messages:
-- When you start the program, you will see a message that says "Character Counter".
-- You will then be prompted with the message "Please enter a line of lower case text".
+- When you start the program, you will see a message that says "String character counter program".
+- You will then be prompted with the message "Enter a string: ".
 
 #### Input Your Text:
-- Type in a line of lowercase text (e.g., "hello world" or "bob smith") and press Enter.
-- Program only accepts lowercase letters
+- Type in a line of text (e.g., "hello world" or "Bob Smith") and press Enter.
+- Program accepts both uppercase and lowercase characters. 
 ### Counting Characters
 
 #### Processing Your Input:
-- The program will read each letter in your text.
+- The program will read each letter in your string.
 - It will count how many times each letter appears.
-- Remember: - Program only accepts lowercase letters!
+- NOTE: - Program accepts uppercase and lowercase letters but the case of the letter is not considered uniquely! This means that entering a captial versus lowercase charater only counts as the same ocurrance of the same letter. 
 #### Displaying Results:
 - After counting, the program will display each letter and the number of times it appeared in your text.
-- For example, if you entered "hello", it might display:
+- For example, if you entered "Hello", it would display:
   h = 1 , e  = 1, l =2, o = 1 
 
 ##### EXAMPLE OF PROGRAM OUTPUT: 
-![Screenshot 2024-05-20 001852](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/8720268d-c791-4818-9a60-4cc4bffb290d)
+![Screenshot (467)](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/2a70d1de-e3ac-40aa-bb74-03e00927a79b)
 
 
-## Behind the Scenes
+## How-it-Works
 - The program uses an array to keep track of the counts for each letter.
 - It converts each letter to a corresponding position in the array.
 - It increments the count for each letter as it reads through your input.
