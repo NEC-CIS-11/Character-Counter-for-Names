@@ -1,8 +1,7 @@
-
 # Character Counter Program
 
 ## Overview
-The Character Counter Program is an application designed to count and display how often each letter appears in a line of text that you enter. This program runs on the LC-3 simulator.
+The Character Counter Program is an application designed to count and display how often each letter appears in a STRING you enter. This program runs on the LC-3 simulator.
 
 ## How It Works
 
@@ -14,31 +13,31 @@ The Character Counter Program is an application designed to count and display ho
 
 #### Input Your Text:
 - Type in a line of text (e.g., "hello world" or "Bob Smith") and press Enter.
-- Program accepts both uppercase and lowercase characters. 
+- The program accepts both uppercase and lowercase characters.
+
 ### Counting Characters
 
 #### Processing Your Input:
 - The program will read each letter in your string.
 - It will count how many times each letter appears.
-- NOTE: - Program accepts uppercase and lowercase letters but the case of the letter is not considered uniquely! This means that entering a captial versus lowercase charater only counts as the same ocurrance of the same letter. 
+- NOTE: The program treats uppercase and lowercase letters as the same. For example, 'A' and 'a' are considered the same letter.
+
 #### Displaying Results:
 - After counting, the program will display each letter and the number of times it appeared in your text.
 - For example, if you entered "Hello", it would display:
-  h = 1 , e  = 1, l =2, o = 1 
+  - h = 1, e = 1, l = 2, o = 1
 
-##### EXAMPLE OF PROGRAM : 
+### Example of Program:
 ![Screenshot (467)](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/2a70d1de-e3ac-40aa-bb74-03e00927a79b)
-
 
 ## How-it-Works
 - The program uses an array to keep track of the counts for each letter.
 - It converts each letter to a corresponding position in that array.
 - It increments the count for each letter as it reads through your string.
 
-
 ## Key Features
-- **User-centric Input:** Simply type your string and press Enter.
-- **Real-Time Counting:** The program processes and counts frequency of characters in the string you entered regardless of case.
+- **User Input:** Simply type your string and press Enter.
+- **Instant Counting:** The program processes and counts the frequency of characters in the string you entered regardless of case.
 - **Clear Output:** Results are displayed and easy to read.
 
 ## How to Use
@@ -57,66 +56,42 @@ The Character Counter Program is an application designed to count and display ho
   - "String character counter program".
   - "Enter a string: ".
 
-2. **Stack Pointer Setup:** Set the stack pointer to the base address x4000 at Register 6.
-3. **Array Setup:**
+2. **Setup Registers and Array:**
   - Set the starting address of the array.
-  - Initialize a counter to 0.
-  - Initialize array elements to zero.
+  - Initialize counters and flags.
 
 ### Count Characters Functions
 
-1. **Save:** Save the return address to the stack. Decrement the stack pointer by 1.
-2. **ASCII Conversion Preparation:**
-  - Load the value -97 for ASCII conversion.
-  - Set the starting address of the array.
-  - Initialize the character counter to 0.
-3. **Input Loop:**
+1. **Get Input:**
   - Loop until the Enter key is pressed:
-      - Read a character from the user.
-      - Display the character on the screen.
-      - If the Enter key is pressed, exit the loop.
-      - Subtract 97 from the character to find the array index.
-      - If the result is negative, read the next character.
-      - Move to the correct position in the array based on the index.
-      - Increment the character count at this position.
-      - Store the new count back in the array.
-      - Reset to the start of the array for the next character.
-4. **Restore:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the character counting function.
+    - Read a character from the user.
+    - Display the character on the screen.
+    - If the Enter key is pressed, exit the loop.
+    - Convert characters to lowercase if needed.
+    - Increment the character count at the corresponding array position.
 
 ### Display Character Frequencies Function
 
-1. **Save:** Save the return address to the stack. Decrement the stack pointer by 1.
-2. **Display Loop:**
-  - Initialize a counter to 26 (for the alphabet).
-  - Set the current character to 'a'.
+1. **Display Loop:**
+  - Initialize a counter for the alphabet.
   - Set the starting address of the array.
-  - Load the ASCII value for '0'.
-  - Loop:
-      - Display the current character.
-      - Display the equal sign '='.
-      - Get the count of the current character from the array.
-      - Move to the next position in the array.
-      - Convert the count to its ASCII representation.
-      - Display the count.
-      - Move to the next character in the alphabet.
-      - Decrement the counter.
-3. **Restore:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the display function.
+  - Loop through the array and display each letter and its count.
 
-### Termination
-- Halt the program.
 
-## Constants and Messages
+## Labels and Prompts
 
-- **MSG0:** "Character Counter"
-- **MSG1:** "Please enter a line of lower case text"
+- **PRMT:** "String character counter program"
+- **PROMPT:** "Enter a string: "
 - **ARRAY:** Array to store counts for 'a' to 'z'
-- **NEG97:** Constant -97 for ASCII conversion
-- **POS26:** Constant 26 for the loop counter
+- **OFFSET_97:** Constant -97 for ASCII conversion
+- **OFFSET_65:** Constant -65 for ASCII conversion
+- **OFFSET_UPPER:** Constant -26 for uppercase check
+- **OFFSET_CNVRT:** Constant 32 for converting uppercase to lowercase
+- **TOT_LTRS:** Constant 26 for the loop counter
+- **OFFSET_LOWER:** Constant 97 for converting to ASCII letters
+- **OFFSET_NUM:** Constant 48 for converting to ASCII numbers
 - **EQ:** Equal sign '=' in ASCII
-- **TAB:** Newline character
-- **POS97:** Constant 97 for converting to ASCII letters
-- **POS48:** Constant 48 for converting to ASCII numbers
-- **STACK_BASE:** Starting address of the stack
+- **TAB:** Tab character
 
 ## Conclusion
-The Character Counter Program is an easy-to-use program that helps you quickly see how often each letter appears in any line of lowercase text you enter. 
+The Character Counter Program is a simple program that will quickly calculate how often each letter of a string appears in the text you entered. 
