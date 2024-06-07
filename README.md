@@ -26,29 +26,27 @@ The Character Counter Program is an application designed to count and display ho
 - For example, if you entered "Hello", it would display:
   h = 1 , e  = 1, l =2, o = 1 
 
-##### EXAMPLE OF PROGRAM OUTPUT: 
+##### EXAMPLE OF PROGRAM : 
 ![Screenshot (467)](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/2a70d1de-e3ac-40aa-bb74-03e00927a79b)
 
 
 ## How-it-Works
 - The program uses an array to keep track of the counts for each letter.
-- It converts each letter to a corresponding position in the array.
-- It increments the count for each letter as it reads through your input.
+- It converts each letter to a corresponding position in that array.
+- It increments the count for each letter as it reads through your string.
 
-### Finishing Up
-- Once the counts are displayed, the program will halt, and you can view the results.
 
 ## Key Features
-- **User-centric Input:** Simply type your text and press Enter.
-- **Real-Time Counting:** The program processes and counts letters as you type.
-- **Clear Output:** Results are displayed in an easy-to-read format.
+- **User-centric Input:** Simply type your string and press Enter.
+- **Real-Time Counting:** The program processes and counts frequency of characters in the string you entered regardless of case.
+- **Clear Output:** Results are displayed and easy to read.
 
 ## How to Use
 
 1. **Set Up:** Ensure the LC-3 simulator is installed on your computer.
 2. **Load the Program:** Load the Character Counter Program into the simulator.
 3. **Run the Program:** Start the program and follow the on-screen prompts.
-4. **Input Your Text:** Enter a line of lowercase text and press Enter.
+4. **Input Your Text:** Enter a string and press Enter.
 5. **View Results:** See the frequency of each letter displayed on the screen.
 
 ## Detailed Program Flow
@@ -56,17 +54,18 @@ The Character Counter Program is an application designed to count and display ho
 ### Initialization
 
 1. **Display Welcome Messages:**
-  - "Character Counter"
-  - "Please enter a line of lower case text"
-2. **Stack Pointer Setup:** Set the stack pointer to the base address x4000.
+  - "String character counter program".
+  - "Enter a string: ".
+
+2. **Stack Pointer Setup:** Set the stack pointer to the base address x4000 at Register 6.
 3. **Array Setup:**
   - Set the starting address of the array.
   - Initialize a counter to 0.
-  - Initialize array elements to zero using a loop.
+  - Initialize array elements to zero.
 
-### Count Characters Function
+### Count Characters Functions
 
-1. **Save State:** Save the return address (current PC) to the stack. Decrement the stack pointer by 1.
+1. **Save:** Save the return address to the stack. Decrement the stack pointer by 1.
 2. **ASCII Conversion Preparation:**
   - Load the value -97 for ASCII conversion.
   - Set the starting address of the array.
@@ -82,11 +81,11 @@ The Character Counter Program is an application designed to count and display ho
       - Increment the character count at this position.
       - Store the new count back in the array.
       - Reset to the start of the array for the next character.
-4. **Restore State:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the character counting function.
+4. **Restore:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the character counting function.
 
 ### Display Character Frequencies Function
 
-1. **Save State:** Save the return address (current PC) to the stack. Decrement the stack pointer by 1.
+1. **Save:** Save the return address to the stack. Decrement the stack pointer by 1.
 2. **Display Loop:**
   - Initialize a counter to 26 (for the alphabet).
   - Set the current character to 'a'.
@@ -99,10 +98,9 @@ The Character Counter Program is an application designed to count and display ho
       - Move to the next position in the array.
       - Convert the count to its ASCII representation.
       - Display the count.
-      - Display a newline character.
       - Move to the next character in the alphabet.
       - Decrement the counter.
-3. **Restore State:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the display function.
+3. **Restore:** Restore the return address from the stack. Save the current stack pointer address to STACK_PTR. Restore the saved stack pointer address from STACK_PTR. Increment the stack pointer by 1. Return from the display function.
 
 ### Termination
 - Halt the program.
