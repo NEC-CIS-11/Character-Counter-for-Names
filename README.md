@@ -31,7 +31,7 @@ The Character Counter Program is an application designed to count and display ho
 ![Screenshot (467)](https://github.com/NEC-CIS-11/Character-Counter-for-Names/assets/125232234/2a70d1de-e3ac-40aa-bb74-03e00927a79b)
 
 ## How-it-Works
-- The program uses an array to keep track of the counts for each letter.
+- The program uses an array to keep track of the frequencies of each letter.
 - It converts each letter to a corresponding position in that array.
 - It increments the count for each letter as it reads through your string.
 
@@ -48,7 +48,7 @@ The Character Counter Program is an application designed to count and display ho
 4. **Input Your Text:** Enter a string and press Enter.
 5. **View Results:** See the frequency of each letter displayed on the screen.
 
-## Detailed Program Flow
+## Overview of Program Flow
 
 ### Initialization
 
@@ -60,7 +60,7 @@ The Character Counter Program is an application designed to count and display ho
   - Set the starting address of the array.
   - Initialize counters and flags.
 
-### Count Characters Functions
+### Count Characters 
 
 1. **Get Input:**
   - Loop until the Enter key is pressed:
@@ -68,28 +68,31 @@ The Character Counter Program is an application designed to count and display ho
     - Display the character on the screen.
     - If the Enter key is pressed, exit the loop.
     - Convert characters to lowercase if needed.
-    - Increment the character count at the corresponding array position.
+    - Increment the character frequency at the corresponding array position.
 
-### Display Character Frequencies Function
+### Display Character Frequencies 
 
 1. **Display Loop:**
   - Initialize a counter for the alphabet.
   - Set the starting address of the array.
-  - Loop through the array and display each letter and its count.
+  - Loop through the array and display each letter and its frequency.
+
+### Program also includes functions to determine character cases and many of the project requirements that are not listed here. 
+## Please refer to source code for specific details of implementation. 
 
 
 ## Labels and Prompts
 
 - **PRMT:** "String character counter program"
 - **PROMPT:** "Enter a string: "
-- **ARRAY:** Array to store counts for 'a' to 'z'
-- **OFFSET_97:** Constant -97 for ASCII conversion
-- **OFFSET_65:** Constant -65 for ASCII conversion
-- **OFFSET_UPPER:** Constant -26 for uppercase check
-- **OFFSET_CNVRT:** Constant 32 for converting uppercase to lowercase
-- **TOT_LTRS:** Constant 26 for the loop counter
-- **OFFSET_LOWER:** Constant 97 for converting to ASCII letters
-- **OFFSET_NUM:** Constant 48 for converting to ASCII numbers
+- **ARRAY:** Array to store frequencies for 'a' to 'z'
+- **OFFSET_97:** -97 for ASCII conversion
+- **OFFSET_65:**  -65 for ASCII conversion
+- **OFFSET_UPPER:** -26 for uppercase check
+- **OFFSET_CNVRT:** 32 for converting uppercase to lowercase
+- **TOT_LTRS:**  26 for the loop counter
+- **OFFSET_LOWER:**  97 for converting to ASCII letters
+- **OFFSET_NUM:** 48 for converting to ASCII numbers
 - **EQ:** Equal sign '=' in ASCII
 - **TAB:** Tab character
 
