@@ -1,6 +1,6 @@
 .ORIG x3000  
 
-STACK	.BLKW 26
+STACK	.BLKW 26  ; 26 words of memory for use as the program's stack
 
                  ; Display prompts 
 LEA R0, PRMT      ; LEA PRMT -> R0
@@ -79,9 +79,9 @@ PUTS
 LEA R6, STACK
 
 LEA R4, ARRAY	  ; Reset index of array
-LEA R3, TOT_LTRS
-LDR R3, R3, #0
-AND R0, R0, #0
+LEA R3, TOT_LTRS  ; Loading TOT_LTRS address into R3
+LDR R3, R3, #0	  ; LDR so we can load what is in the address of R3 back to R3 so it contains 26
+AND R0, R0, #0	  ; Clear R0
 
 PUSH_LOOP
 LDR R1, R4, #0 	  ; Load the value at the current index of ARRAY into R1
@@ -112,6 +112,32 @@ BRp SUM_LENGTHS  ; Loop until R6 is back at initial position
 
 ADD R0, R0, R2
 OUT
+
+
+; Integer to string converter fix needed
+;CONVERT_LOOP    
+;AND R0, R0, #0       ; Clear R0
+    
+;ADD R0, R1, #0       ; Copy R1 to R0
+    
+;MOD R0, R0, #10      ; Get the last digit
+    
+;ADD R0, R0, #48      ; Convert the digit to ASCII
+    
+;STR R0, R2, #0       ; Store the ASCII character in buffer
+    
+;ADD R2, R2, #-1      ; Move buffer pointer backwards
+    
+; R1, R1, #10      ; Divide R1 by 10
+    
+;BRp CONVERT_LOOP    ; Loop if there are more digits
+
+
+; Now point R2 to the first digit in the buffer
+ADD R2, R2, #1      
+; Adjust R2 to point to first digit
+
+ 
  
 HALT      
 
